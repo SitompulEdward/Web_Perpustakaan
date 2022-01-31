@@ -18,6 +18,20 @@ namespace Web_Perpustakaan.Controllers
         {
             _context = context;
         }
+
+        public IActionResult Daftar()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Daftar(User datanya)
+        {
+            _context.Add(datanya);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Masuk");
+        }
         public IActionResult Masuk()
         {
             return View();
