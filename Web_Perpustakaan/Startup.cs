@@ -30,6 +30,13 @@ namespace Web_Perpustakaan
                 o.UseMySQL(Configuration.GetConnectionString("mysql"));
             });
 
+            services.AddAuthentication("CookieAuth")
+                .AddCookie("CookieAuth", option =>
+                {
+                    option.LoginPath = "/Akun/Masuk";
+
+                });
+
             services.AddControllersWithViews();
         }
 
@@ -50,6 +57,8 @@ namespace Web_Perpustakaan
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
