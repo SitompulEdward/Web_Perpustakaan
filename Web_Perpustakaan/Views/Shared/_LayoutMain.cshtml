@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Web_Perpustakaan.Helper
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -107,18 +109,34 @@
                             <img src="images/faces/face28.jpg" alt="profile" />
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                            <a class="dropdown-item" asp-area="" asp-controller="Akun" asp-action="Masuk">
-                                <i class="mdi mdi-account text-primary"></i>
-                                Login
-                            </a>
-                            <a class="dropdown-item">
-                                <i class="ti-power-off text-primary"></i>
-                                Logout
-                            </a>
+
+                            @{
+                                string cek = User.GetUsername();
+
+                                if (cek != "")
+                                {
+                                    <a class="dropdown-item" asp-area="" asp-controller="Akun" asp-action="Logout" onclick="if (!confirm('Yakin Untuk Keluar')) { return false; }">
+                                        <i class="ti-power-off text-primary"></i>
+                                        Logout
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="dropdown-item" asp-area="" asp-controller="Akun" asp-action="Masuk">
+                                        <i class="mdi mdi-account text-primary"></i>
+                                        Login
+                                    </a>
+
+                                    <a class="dropdown-item" asp-area="" asp-controller="Akun" asp-action="Daftar">
+                                        <i class="mdi mdi-account-multiple-plus text-primary"></i>
+                                        Daftar
+                                    </a>
+                                }
+                            }
                         </div>
                     </li>
                     <li class="nav-item nav-settings d-none d-lg-flex">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link">
                             <i class="icon-ellipsis"></i>
                         </a>
                     </li>

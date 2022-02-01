@@ -27,6 +27,8 @@ namespace Web_Perpustakaan.Controllers
         [HttpPost]
         public async Task<IActionResult> Daftar(User datanya)
         {
+            var getRole = _context.Tb_Roles.Where(x => x.Id == "2").FirstOrDefault();
+            datanya.Roles = getRole;
             _context.Add(datanya);
             await _context.SaveChangesAsync();
 
@@ -46,31 +48,30 @@ namespace Web_Perpustakaan.Controllers
             {
                 var cekPassword = _context.Tb_User.Where(x => x.Username == datanya.Username
                                                          && x.Password == datanya.Password)
-                                                         //.Include(x2 => x2.Roles)
-                                                         .FirstOrDefault();
+                                                         .Include(x2 => x2.Roles).FirstOrDefault();
 
                 // proses tampungan data
 
                 if (cekPassword != null)
                 {
-                    //var daftar = new List<Claim>
-                    //{
-                    //    new Claim ("Username", cariUsername.Username),
-                    //    new Claim("Role", cariUsername.Roles.Id)
-                    //};
+                    var daftar = new List<Claim>
+                    {
+                        new Claim ("Username", cariUsername.Username),
+                        new Claim("Role", cariUsername.Roles.Id)
+                    };
 
-                    //// proses daftar Auth
+                    // proses daftar Auth
 
-                    //await HttpContext.SignInAsync(
-                    //    new ClaimsPrincipal(
-                    //        new ClaimsIdentity(daftar, "Cookie", "Username", "Role")
-                    //    )
-                    //);
+                    await HttpContext.SignInAsync(
+                        new ClaimsPrincipal(
+                            new ClaimsIdentity(daftar, "Cookie", "Username", "Role")
+                        )
+                    );
 
-                    //if (cariUsername.Roles.Id == "1")
-                    //{
-                    //    return RedirectToAction(controllerName: "Home", actionName: "Index");
-                    //}
+                    if (cariUsername.Roles.Id == "1")
+                    {
+                        return RedirectToAction(controllerName: "Home", actionName: "Index");
+                    }
 
                     return RedirectToAction(controllerName: "Home", actionName: "Index");
                 }
@@ -80,6 +81,13 @@ namespace Web_Perpustakaan.Controllers
 
             ViewBag.pesan = "Username Salah !";
             return View(datanya);
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+
+            return Redirect("/");
         }
     }
 }
