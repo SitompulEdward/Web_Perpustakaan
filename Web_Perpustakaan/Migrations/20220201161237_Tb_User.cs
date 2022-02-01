@@ -2,7 +2,7 @@
 
 namespace Web_Perpustakaan.Migrations
 {
-    public partial class Tb_Roles : Migration
+    public partial class Tb_User : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,6 +26,8 @@ namespace Web_Perpustakaan.Migrations
                     Password = table.Column<string>(type: "text", nullable: true),
                     Name = table.Column<string>(type: "text", nullable: true),
                     Email = table.Column<string>(type: "text", nullable: true),
+                    Alamat = table.Column<string>(type: "text", nullable: true),
+                    No_Handphone = table.Column<string>(type: "text", nullable: true),
                     RolesId = table.Column<string>(type: "varchar(767)", nullable: true)
                 },
                 constraints: table =>

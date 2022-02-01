@@ -13,7 +13,7 @@
 
         <form asp-action="Daftar">
             <div class="input-group mb-3">
-                <input asp-for="Name" class="form-control" placeholder="Nama">
+                <input asp-for="Name" class="form-control" placeholder="Nama Lengkap">
                 <div class="input-group-append">
                     <div class="input-group-text">
                         <span class="fas fa-user"></span>
@@ -21,7 +21,15 @@
                 </div>
             </div>
             <div class="input-group mb-3">
-                <input  asp-for="Email" class="form-control" placeholder="Email">
+                <input asp-for="No_Handphone" class="form-control" placeholder="No Handphone">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-phone"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input asp-for="Email" class="form-control" placeholder="Email">
                 <div class="input-group-append">
                     <div class="input-group-text">
                         <span class="fas fa-envelope"></span>
@@ -29,10 +37,18 @@
                 </div>
             </div>
             <div class="input-group mb-3">
+                <input asp-for="Alamat" class="form-control" placeholder="Alamat">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-address-card"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-3">
                 <input asp-for="Username" class="form-control" placeholder="Username">
                 <div class="input-group-append">
                     <div class="input-group-text">
-                        <span class="fas fa-lock"></span>
+                        <span class="fas fa-user"></span>
                     </div>
                 </div>
             </div>
@@ -52,7 +68,7 @@
                             I agree to the <a href="#">terms</a>
                         </label>
                     </div>
-                </div> 
+                </div>
                 <!-- /.col -->
                 <div class="col-4">
                     <button type="submit" class="btn btn-primary btn-block">Register</button>
@@ -61,7 +77,9 @@
             </div>
         </form>
 
-        <a asp-action="Masuk">Saya Sudah Punya Akun</a>
+        <div>
+            <p style="margin:10px">Already have an account?<a asp-action="Masuk">Login</a></p>
+        </div>
     </div>
     @*/.form-box*@
 </div> @*/.card-> *@

@@ -13,6 +13,8 @@ namespace Web_Perpustakaan.Models
         public string Password { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
+        public string Alamat { get; set; }
+        public string No_Handphone { get; set; }
         public Roles Roles { get; set; }
     }
 }

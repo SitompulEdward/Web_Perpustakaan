@@ -16,5 +16,8 @@ namespace Web_Perpustakaan.Data
 
         public virtual DbSet<Roles> Tb_Roles { get; set; }
         public virtual DbSet<User> Tb_User { get; set; }
+        public virtual DbSet<Buku> Tb_Buku { get; set; }
+        public virtual DbSet<Peminjaman> Tb_Peminjaman { get; set; }
+        public virtual DbSet<Pengembalian> Tb_Pengembalian { get; set; }
     }
 }

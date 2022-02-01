@@ -8,8 +8,8 @@ using Web_Perpustakaan.Data;
 namespace Web_Perpustakaan.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220131082218_Tb_Roles")]
-    partial class Tb_Roles
+    [Migration("20220201161237_Tb_User")]
+    partial class Tb_User
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,10 +36,16 @@ namespace Web_Perpustakaan.Migrations
                     b.Property<string>("Username")
                         .HasColumnType("varchar(767)");
 
+                    b.Property<string>("Alamat")
+                        .HasColumnType("text");
+
                     b.Property<string>("Email")
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("No_Handphone")
                         .HasColumnType("text");
 
                     b.Property<string>("Password")
