@@ -7,10 +7,10 @@ using Web_Perpustakaan.Data;
 
 namespace Web_Perpustakaan.Controllers
 {
-    public class TransaksiController : Controller
+    public class PeminjamanController : Controller
     {
         private readonly AppDbContext _context;
-        public TransaksiController(AppDbContext context)
+        public PeminjamanController(AppDbContext context)
         {
             _context = context;
         }

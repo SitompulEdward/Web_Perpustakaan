@@ -1,0 +1,35 @@
+﻿@model Buku
+
+@{
+    Layout = "_Layout";
+}
+
+
+<div class="align-items-center">
+    <h3>Tambah Buku</h3>
+</div>
+<hr />
+
+<form asp-action="Create" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label class="form-label">Judul Buku</label>
+        <input asp-for="Judul_Buku" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Pengarang</label>
+        <input asp-for="Pengarang" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Penerbit</label>
+        <input asp-for="Penerbit" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Tahun Terbit</label>
+        <input asp-for="Tahun_Terbit" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label>Pilih Gambar</label>
+        <input asp-for="Gambar" type="file" class="form-control-file">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
