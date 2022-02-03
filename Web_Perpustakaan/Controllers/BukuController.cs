@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Web_Perpustakaan.Data;
 using Web_Perpustakaan.Models;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Web_Perpustakaan.Controllers
 {
@@ -14,9 +15,12 @@ namespace Web_Perpustakaan.Controllers
     {
         
         private readonly AppDbContext _context;
-        public BukuController(AppDbContext context)
+        
+        IWebHostEnvironment _env;
+        public BukuController(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         public IActionResult Create()
@@ -27,23 +31,41 @@ namespace Web_Perpustakaan.Controllers
        
         
         [HttpPost]
-        public async Task<IActionResult> Create(Buku parameter)
+        public async Task<IActionResult> Create(Buku parameter, IFormFile Gambar)
         {
-            var id = "BK-";
-            int a = 001;
-            parameter.Id = id + a;
-
+            string[] Id = _context.Tb_Buku.Select(x => x.Id).ToArray();
+           
+            int temp;
+            foreach (var ids in Id)
+            {
+                temp = Int32.Parse(ids.Split("-")[1]);
+                parameter.Id = "BK-" + (temp + 1);
+            }
             if (ModelState.IsValid)
             {
+                parameter.Gambar = Gambar.FileName;
+
+                string FilePath = Path.Combine(_env.WebRootPath, "UploadImg");
+
+                if (!Directory.Exists(FilePath))
+                {
+                    Directory.CreateDirectory(FilePath);
+                }
+
+                string FileName = Gambar.FileName;
+
+                string FullPath = Path.Combine(FilePath, FileName);
+
+                using(var stream  = new FileStream(FullPath, FileMode.Create))
+                {
+                    await Gambar.CopyToAsync(stream);
+                }
                 // proses masukan ke database
 
                 _context.Add(parameter);
                 await _context.SaveChangesAsync();
 
-                //string contentRootPath = _hostingEnvironment.ContentRootPath;
-                //string docPath = Path.Combine(_hostingEnvironment.ContentRootPath, "~/images");
 
-                a++;
 
                 return Redirect("Index"); // menerima inputan
             }

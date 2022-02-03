@@ -9,8 +9,8 @@ using Web_Perpustakaan.Data;
 namespace Web_Perpustakaan.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220201180143_Tb_Peminjaman")]
-    partial class Tb_Peminjaman
+    [Migration("20220203192552_Tb_peminjaman")]
+    partial class Tb_peminjaman
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -67,14 +67,14 @@ namespace Web_Perpustakaan.Migrations
                     b.Property<DateTime>("Tgl_Pengembalian")
                         .HasColumnType("datetime");
 
-                    b.Property<string>("Username")
+                    b.Property<string>("User")
                         .HasColumnType("varchar(767)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BukuId");
 
-                    b.HasIndex("Username");
+                    b.HasIndex("User");
 
                     b.ToTable("Tb_Peminjaman");
                 });
@@ -87,7 +87,7 @@ namespace Web_Perpustakaan.Migrations
                     b.Property<string>("Nama_Lengkap")
                         .HasColumnType("text");
 
-                    b.Property<string>("PeminjamanId")
+                    b.Property<string>("Peminjaman")
                         .HasColumnType("varchar(767)");
 
                     b.Property<string>("Tgl_Kembali")
@@ -98,7 +98,7 @@ namespace Web_Perpustakaan.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PeminjamanId");
+                    b.HasIndex("Peminjaman");
 
                     b.ToTable("Tb_Pengembalian");
                 });
@@ -148,26 +148,26 @@ namespace Web_Perpustakaan.Migrations
 
             modelBuilder.Entity("Web_Perpustakaan.Models.Peminjaman", b =>
                 {
-                    b.HasOne("Web_Perpustakaan.Models.Buku", "Buku")
+                    b.HasOne("Web_Perpustakaan.Models.Buku", "FkBuku")
                         .WithMany()
                         .HasForeignKey("BukuId");
 
-                    b.HasOne("Web_Perpustakaan.Models.User", "User")
+                    b.HasOne("Web_Perpustakaan.Models.User", "FkUser")
                         .WithMany()
-                        .HasForeignKey("Username");
+                        .HasForeignKey("User");
 
-                    b.Navigation("Buku");
+                    b.Navigation("FkBuku");
 
-                    b.Navigation("User");
+                    b.Navigation("FkUser");
                 });
 
             modelBuilder.Entity("Web_Perpustakaan.Models.Pengembalian", b =>
                 {
-                    b.HasOne("Web_Perpustakaan.Models.Peminjaman", "Peminjaman")
+                    b.HasOne("Web_Perpustakaan.Models.Peminjaman", "FkPeminjaman")
                         .WithMany()
-                        .HasForeignKey("PeminjamanId");
+                        .HasForeignKey("Peminjaman");
 
-                    b.Navigation("Peminjaman");
+                    b.Navigation("FkPeminjaman");
                 });
 
             modelBuilder.Entity("Web_Perpustakaan.Models.User", b =>

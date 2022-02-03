@@ -17,7 +17,14 @@ namespace Web_Perpustakaan.Models
         public string Alamat { get; set; }
         public DateTime Tgl_Peminjaman { get; set; }
         public DateTime Tgl_Pengembalian { get; set; }
-        public User User { get; set; }        
-        public Buku Buku { get; set; }
+        public string User { get; set; }
+        public string BukuId { get; set; }
+
+        [ForeignKey("User")]
+        public User FkUser { get; set; }
+
+        [ForeignKey("BukuId")]
+        public Buku FkBuku { get; set; }
+        
     }
 }

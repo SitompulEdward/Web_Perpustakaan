@@ -10,7 +10,7 @@
 </div>
 <hr />
 
-<form asp-action="Create" enctype="multipart/form-data">
+<form asp-action="Create" method="POST" enctype="multipart/form-data">
     <div class="mb-3">
         <label class="form-label">Judul Buku</label>
         <input asp-for="Judul_Buku" type="text" class="form-control">
@@ -28,8 +28,10 @@
         <input asp-for="Tahun_Terbit" type="text" class="form-control">
     </div>
     <div class="mb-3">
-        <label>Pilih Gambar</label>
+        <label asp-for="Gambar">Pilih Gambar</label>
         <input asp-for="Gambar" type="file" class="form-control-file">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
 </form>

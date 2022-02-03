@@ -1,65 +1,83 @@
-﻿
+﻿@model IEnumerable<Peminjaman>
+
+
 <div class="row">
-    <div class="col-lg-12 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Tabel Peminjaman</h4>
-                <p class="card-description"></p>
-                <div class="table-responsive">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Tabel Peminjaman</h4>
+                    <p class="card-description"></p>
+                    <div class="table-responsive">
 
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>
-                                    User
-                                </th>
-                                <th>
-                                    First name
-                                </th>
-                                <th>
-                                    Progress
-                                </th>
-                                <th>
-                                    Amount
-                                </th>
-                                <th>
-                                    Deadline
-                                </th>
-                                <th>
-                                    Opsi
-                                </th>
-                            </tr>
-                        </thead>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Id)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Nama_Lengkap)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.No_Handphone)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Alamat)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Tgl_Peminjaman)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Tgl_Pengembalian)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.User)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.BukuId)
+                                    </th>
+                                </tr>
+                            </thead>
 
-                        <tbody>
-                            <tr>
-                                <td class="py-1">
-                                    <img src="../../images/faces/face1.jpg" alt="image" />
-                                </td>
-                                <td>
-                                    Herman Beck
-                                </td>
-                                <td>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </td>
-                                <td>
-                                    $ 77.99
-                                </td>
-                                <td>
-                                    May 15, 2015
-                                </td>
-                                <td>
-                                    <a class="btn btn-primary" style="width:80px; font-size: small">Edit</a>
-                                    <a class="btn btn-warning" style="width: 80px; font-size: small">Delete</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Nama_Lengkap)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.No_Handphone)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Alamat)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Tgl_Peminjaman)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Tgl_Pengembalian)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.User)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.BukuId)
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary" style="width:80px; font-size: small">Edit</a>
+                                        <a class="btn btn-warning" style="width: 80px; font-size: small">Delete</a>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
