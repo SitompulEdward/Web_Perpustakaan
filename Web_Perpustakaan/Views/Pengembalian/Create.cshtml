@@ -1,0 +1,33 @@
+﻿@model PengembalianForm
+
+@{
+    Layout = "_LayoutMain";
+}
+
+
+<div class="align-items-center">
+    <h3>Pengembalian</h3>
+</div>
+<hr />
+
+<form asp-controller="Pengembalian" asp-action="Create" method="POST">
+    <div class="mb-3">
+        <label asp-for="Nama_Lengkap" class="form-label">Nama Lengkap</label>
+        <input asp-for="Nama_Lengkap" class="form-control">
+        <span asp-validation-for="Nama_Lengkap" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Tgl_Kembali" class="form-label">Tanggal Kembali</label>
+        <input asp-for="Tgl_Kembali" class="form-control">
+        <span asp-validation-for="Tgl_Kembali" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="PeminjamanId" class="form-label">Id Peminjaman</label>
+        <input asp-for="PeminjamanId" class="form-control">
+        <span asp-validation-for="PeminjamanId" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>

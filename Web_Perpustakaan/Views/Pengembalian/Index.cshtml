@@ -1,4 +1,6 @@
-﻿
+﻿@model IEnumerable<Pengembalian>
+
+
 <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
@@ -11,19 +13,19 @@
                         <thead>
                             <tr>
                                 <th>
-                                    User
+                                    @Html.DisplayNameFor(model => model.Id)
                                 </th>
                                 <th>
-                                    First name
+                                    @Html.DisplayNameFor(model => model.Nama_Lengkap)
                                 </th>
                                 <th>
-                                    Progress
+                                    @Html.DisplayNameFor(model => model.Tgl_Kembali_Seharusnya)
                                 </th>
                                 <th>
-                                    Amount
+                                    @Html.DisplayNameFor(model => model.Tgl_Kembali)
                                 </th>
                                 <th>
-                                    Deadline
+                                    @Html.DisplayNameFor(model => model.PeminjamanId)
                                 </th>
                                 <th>
                                     Opsi
@@ -32,29 +34,30 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td class="py-1">
-                                    <img src="../../images/faces/face1.jpg" alt="image" />
-                                </td>
-                                <td>
-                                    Herman Beck
-                                </td>
-                                <td>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </td>
-                                <td>
-                                    $ 77.99
-                                </td>
-                                <td>
-                                    May 15, 2015
-                                </td>
-                                <td>
-                                    <a class="btn btn-primary" style="width:80px; font-size: small">Edit</a>
-                                    <a class="btn btn-warning" style="width: 80px; font-size: small">Delete</a>
-                                </td>
-                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Nama_Lengkap)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Tgl_Kembali_Seharusnya)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Tgl_Kembali)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PeminjamanId)
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary" style="width:80px; font-size: small">Edit</a>
+                                        <a class="btn btn-warning" style="width: 80px; font-size: small">Delete</a>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
 

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Buku>
+
+@foreach (var item in Model)
+{
+
+    <div class="row justify-content-center">
+        <div class="col-lg-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">@Html.DisplayFor(modelItem => item.Judul_Buku)</h4>
+                    <p class="card-description">
+                        Pinjam Buku <code><a asp-controller="Akun" asp-action="Masuk">klik disini</a></code>
+                    </p>
+                    <div class="table-responsive">
+                        <div>
+                            <img src="~/UploadImg/@item.Gambar" alt="image" width="300" style="margin-left:40px" />
+                        </div>
+                        <hr />
+                        <div>
+                            <label>
+                                @Html.DisplayNameFor(model => model.Id) :
+                            </label>
+                            <span>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </span>
+                        </div>
+                        <div>
+                            <label>
+                                @Html.DisplayNameFor(model => model.Pengarang) :
+                            </label>
+                            <span>
+                                @Html.DisplayFor(modelItem => item.Pengarang)
+                            </span>
+                        </div>
+                        <div>
+                            <label>
+                                @Html.DisplayNameFor(model => model.Penerbit) :
+                            </label>
+                            <span>
+                                @Html.DisplayFor(modelItem => item.Penerbit)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+}
+
+
+

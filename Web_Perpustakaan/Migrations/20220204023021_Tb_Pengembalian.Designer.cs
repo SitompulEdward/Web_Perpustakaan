@@ -9,8 +9,8 @@ using Web_Perpustakaan.Data;
 namespace Web_Perpustakaan.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220203203353_Tb_User")]
-    partial class Tb_User
+    [Migration("20220204023021_Tb_Pengembalian")]
+    partial class Tb_Pengembalian
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -82,18 +82,18 @@ namespace Web_Perpustakaan.Migrations
                     b.Property<string>("Nama_Lengkap")
                         .HasColumnType("text");
 
-                    b.Property<string>("Peminjaman")
+                    b.Property<string>("PeminjamanId")
                         .HasColumnType("varchar(767)");
 
-                    b.Property<string>("Tgl_Kembali")
-                        .HasColumnType("text");
+                    b.Property<DateTime>("Tgl_Kembali")
+                        .HasColumnType("datetime");
 
-                    b.Property<string>("Tgl_Kembali_Seharusnya")
-                        .HasColumnType("text");
+                    b.Property<DateTime>("Tgl_Kembali_Seharusnya")
+                        .HasColumnType("datetime");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Peminjaman");
+                    b.HasIndex("PeminjamanId");
 
                     b.ToTable("Tb_Pengembalian");
                 });
@@ -148,7 +148,7 @@ namespace Web_Perpustakaan.Migrations
                 {
                     b.HasOne("Web_Perpustakaan.Models.Peminjaman", "FkPeminjaman")
                         .WithMany()
-                        .HasForeignKey("Peminjaman");
+                        .HasForeignKey("PeminjamanId");
 
                     b.Navigation("FkPeminjaman");
                 });

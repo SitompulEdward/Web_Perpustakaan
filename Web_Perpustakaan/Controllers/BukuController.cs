@@ -75,6 +75,12 @@ namespace Web_Perpustakaan.Controllers
             var data = _context.Tb_Buku.ToList();
             return View(data);
         }
+
+        public IActionResult DaftarBuku()
+        {
+            var data = _context.Tb_Buku.ToList();
+            return View(data);
+        }
     }
 }
     

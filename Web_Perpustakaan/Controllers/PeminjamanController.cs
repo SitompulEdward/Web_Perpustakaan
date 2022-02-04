@@ -43,6 +43,8 @@ namespace Web_Perpustakaan.Controllers
                 data.Id = "PJ-1";
             }
 
+
+
             data.Tgl_Peminjaman = DateTime.Now;
 
             var get = new Peminjaman
