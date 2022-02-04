@@ -8,9 +8,12 @@ using System.Threading.Tasks;
 using Web_Perpustakaan.Data;
 using Web_Perpustakaan.Models;
 using Microsoft.AspNetCore.Hosting;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Web_Perpustakaan.Controllers
 {
+    [Authorize]
     public class BukuController : Controller
     {
         
@@ -72,6 +75,7 @@ namespace Web_Perpustakaan.Controllers
 
         public IActionResult Index()
         {
+           
             var data = _context.Tb_Buku.ToList();
             return View(data);
         }

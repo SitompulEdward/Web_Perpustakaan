@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using Web_Perpustakaan.Models;
 
 namespace Web_Perpustakaan.Controllers
 {
+    [Authorize]
     public class PengembalianController : Controller
     {
         private readonly AppDbContext _context;
