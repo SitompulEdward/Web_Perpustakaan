@@ -1,1 +1,42 @@
-﻿
+﻿@model PeminjamanForm
+
+@{
+    Layout = "_LayoutMain";
+}
+
+
+<div class="align-items-center">
+    <h3>Peminjaman</h3>
+</div>
+<hr />
+
+<form asp-controller="Peminjaman" asp-action="Create" method="POST">
+    <div class="mb-3">
+        <label asp-for="Nama_Lengkap" class="form-label">Nama Lengkap</label>
+        <input asp-for="Nama_Lengkap" class="form-control">
+        <span asp-validation-for="Nama_Lengkap" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="No_Handphone" class="form-label">No Handphone</label>
+        <input asp-for="No_Handphone" class="form-control">
+        <span asp-validation-for="No_Handphone" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Alamat" class="form-label">Alamat</label>
+        <input asp-for="Alamat" class="form-control">
+        <span asp-validation-for="Alamat" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Tgl_Pengembalian" class="form-label">Waktu Pengembalian</label>
+        <input asp-for="Tgl_Pengembalian" class="form-control">
+        <span asp-validation-for="Tgl_Pengembalian" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Id Buku</label>
+        <input asp-for="BukuId" class="form-control">
+        <span asp-validation-for="BukuId" class="text-danger"></span>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Web_Perpustakaan.Migrations
 {
-    public partial class Tb_peminjaman : Migration
+    public partial class Tb_User : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,7 +17,6 @@ namespace Web_Perpustakaan.Migrations
                     Alamat = table.Column<string>(type: "text", nullable: true),
                     Tgl_Peminjaman = table.Column<DateTime>(type: "datetime", nullable: false),
                     Tgl_Pengembalian = table.Column<DateTime>(type: "datetime", nullable: false),
-                    User = table.Column<string>(type: "varchar(767)", nullable: true),
                     BukuId = table.Column<string>(type: "varchar(767)", nullable: true)
                 },
                 constraints: table =>
@@ -29,11 +28,26 @@ namespace Web_Perpustakaan.Migrations
                         principalTable: "Tb_Buku",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tb_User",
+                columns: table => new
+                {
+                    Username = table.Column<string>(type: "varchar(767)", nullable: false),
+                    Password = table.Column<string>(type: "text", nullable: true),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Email = table.Column<string>(type: "text", nullable: true),
+                    RolesId = table.Column<string>(type: "varchar(767)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tb_User", x => x.Username);
                     table.ForeignKey(
-                        name: "FK_Tb_Peminjaman_Tb_User_User",
-                        column: x => x.User,
-                        principalTable: "Tb_User",
-                        principalColumn: "Username",
+                        name: "FK_Tb_User_Tb_Roles_RolesId",
+                        column: x => x.RolesId,
+                        principalTable: "Tb_Roles",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -64,20 +78,23 @@ namespace Web_Perpustakaan.Migrations
                 column: "BukuId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tb_Peminjaman_User",
-                table: "Tb_Peminjaman",
-                column: "User");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Tb_Pengembalian_Peminjaman",
                 table: "Tb_Pengembalian",
                 column: "Peminjaman");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tb_User_RolesId",
+                table: "Tb_User",
+                column: "RolesId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Tb_Pengembalian");
+
+            migrationBuilder.DropTable(
+                name: "Tb_User");
 
             migrationBuilder.DropTable(
                 name: "Tb_Peminjaman");

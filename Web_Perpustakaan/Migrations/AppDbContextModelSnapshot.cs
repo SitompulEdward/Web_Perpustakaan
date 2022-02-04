@@ -65,14 +65,9 @@ namespace Web_Perpustakaan.Migrations
                     b.Property<DateTime>("Tgl_Pengembalian")
                         .HasColumnType("datetime");
 
-                    b.Property<string>("User")
-                        .HasColumnType("varchar(767)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("BukuId");
-
-                    b.HasIndex("User");
 
                     b.ToTable("Tb_Peminjaman");
                 });
@@ -119,16 +114,10 @@ namespace Web_Perpustakaan.Migrations
                     b.Property<string>("Username")
                         .HasColumnType("varchar(767)");
 
-                    b.Property<string>("Alamat")
-                        .HasColumnType("text");
-
                     b.Property<string>("Email")
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.Property<string>("No_Handphone")
                         .HasColumnType("text");
 
                     b.Property<string>("Password")
@@ -150,13 +139,7 @@ namespace Web_Perpustakaan.Migrations
                         .WithMany()
                         .HasForeignKey("BukuId");
 
-                    b.HasOne("Web_Perpustakaan.Models.User", "FkUser")
-                        .WithMany()
-                        .HasForeignKey("User");
-
                     b.Navigation("FkBuku");
-
-                    b.Navigation("FkUser");
                 });
 
             modelBuilder.Entity("Web_Perpustakaan.Models.Pengembalian", b =>

@@ -60,14 +60,11 @@ namespace Web_Perpustakaan.Controllers
                 {
                     await Gambar.CopyToAsync(stream);
                 }
-                // proses masukan ke database
 
                 _context.Add(parameter);
                 await _context.SaveChangesAsync();
 
-
-
-                return Redirect("Index"); // menerima inputan
+                return Redirect("Index"); 
             }
 
             return View(parameter);
